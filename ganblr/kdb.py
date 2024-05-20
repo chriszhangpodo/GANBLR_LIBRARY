@@ -1,6 +1,6 @@
 import numpy as np
 #import networkx as nx
-from pyitlib import discrete_random_variable as drv
+#from pyitlib import discrete_random_variable as drv
 from builtins import zip
 from builtins import str
 from builtins import range
@@ -4709,7 +4709,7 @@ def build_graph(X, y, k=2):
 
   #feature indexes desc sort by mutual information
   sorted_feature_idxs = np.argsort([
-    drv.information_mutual(_x(i), y) 
+    information_mutual(_x(i), y) 
     for i in range(num_features)
   ])[::-1]
 
@@ -4725,7 +4725,7 @@ def build_graph(X, y, k=2):
         edges.append((x_nodes[idx], target_node))
     else:
       first_k_parent_mi_idxs = np.argsort([
-        drv.information_mutual_conditional(*_x2comb(i, target_idx), y)
+        information_mutual_conditional(*_x2comb(i, target_idx), y)
         for i in parent_candidate_idxs
       ])[::-1][:k]
       first_k_parent_idxs = parent_candidate_idxs[first_k_parent_mi_idxs]
